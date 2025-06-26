@@ -8,7 +8,29 @@
           <span
             class="self-center text-lg text-[#ff03038a] font-semibold whitespace-nowrap fadein-bot hover:text-amber-100">Eng.Abdelrhman(D3ff4ult);</span>
         </button>
-        <div class="hidden md:flex justify-between items-center w-full md:w-auto md:order-1" id="mobile-menu-3">
+
+
+        <button @click="toggleMobileMenu"
+          class="md:hidden text-gray-200 focus:outline-none text-2xl p-2 transition hover:text-white">
+          ☰
+        </button>
+
+
+        <div :class="['w-full md:flex md:items-center md:w-auto md:order-1', isMobileMenuOpen ? 'block' : 'hidden']"
+          id="mobile-menu-3">
+          <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
+            <li><router-link to="/" class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">Home</router-link>
+            </li>
+            <li><router-link to="/about"
+                class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">About</router-link></li>
+            <li><router-link to="/portfolio"
+                class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">Portfolio</router-link></li>
+            <li><router-link to="/contact"
+                class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">ContactMe</router-link></li>
+          </ul>
+        </div>
+
+        <!-- <div class="hidden md:flex justify-between items-center w-full md:w-auto md:order-1" id="mobile-menu-3">
           <ul class="flex-col md:flex-row flex md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
             <li><router-link to="/"
                 class="fadein-bot text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-gray-500 md:p-0"
