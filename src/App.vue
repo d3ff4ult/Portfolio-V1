@@ -10,25 +10,21 @@
         </button>
 
 
-        <button @click="toggleMobileMenu"
-          class="md:hidden text-gray-200 focus:outline-none text-2xl p-2 transition hover:text-white">
-          ☰
-        </button>
+<button @click="toggleMobileMenu"
+  class="md:hidden text-gray-200 focus:outline-none text-2xl p-2 transition hover:text-white z-50 relative">
+  ☰
+</button>
 
+<div :class="['w-full md:flex md:items-center md:w-auto md:order-1', isMobileMenuOpen ? 'block' : 'hidden']"
+  id="mobile-menu-3">
+  <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
+    <li><router-link @click="toggleMobileMenu" to="/" class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">Home</router-link></li>
+    <li><router-link @click="toggleMobileMenu" to="/about" class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">About</router-link></li>
+    <li><router-link @click="toggleMobileMenu" to="/portfolio" class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">Portfolio</router-link></li>
+    <li><router-link @click="toggleMobileMenu" to="/contact" class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">ContactMe</router-link></li>
+  </ul>
+</div>
 
-        <div :class="['w-full md:flex md:items-center md:w-auto md:order-1', isMobileMenuOpen ? 'block' : 'hidden']"
-          id="mobile-menu-3">
-          <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
-            <li><router-link to="/" class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">Home</router-link>
-            </li>
-            <li><router-link to="/about"
-                class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">About</router-link></li>
-            <li><router-link to="/portfolio"
-                class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">Portfolio</router-link></li>
-            <li><router-link to="/contact"
-                class="fadein-bot text-gray-300 hover:text-white block py-2 px-4">ContactMe</router-link></li>
-          </ul>
-        </div>
 
         <!-- <div class="hidden md:flex justify-between items-center w-full md:w-auto md:order-1" id="mobile-menu-3">
           <ul class="flex-col md:flex-row flex md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
@@ -121,7 +117,10 @@
 export default {
   methods: {
     redirectToHome() {
-      this.$router.push('/')
+      this.$router.push('/');
+    },
+    toggleMobileMenu() {
+      this.isMobileMenuOpen = !this.isMobileMenuOpen;
     }
   }
 }
