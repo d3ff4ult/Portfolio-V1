@@ -1,18 +1,16 @@
 <template>
   <div class="max-w-7xl mx-auto flex flex-col relative">
-    
-    <nav
-  class="fixed top-0 z-50 w-full backdrop-blur-md bg-[#121212] bg-opacity-80 border-b border-gray-700">
-  <div class="mx-auto max-w-7xl px-5 py-4 flex items-center justify-between">
-    
-    <button @click="redirectToHome" class="flex">
-      <span
-        class="self-center text-lg text-[#ff03038a] font-semibold whitespace-nowrap fadein-bot hover:text-amber-100">
+
+    <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#121212]/80 border-b border-gray-700">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <button @click="redirectToHome" class="flex items-center">
+      <span class="text-lg text-[#ff03038a] font-semibold whitespace-nowrap hover:text-amber-100">
         Eng.Abdelrhman(D3ff4ult);
       </span>
     </button>
 
-    
+   
     <button @click="toggleMobileMenu"
       class="md:hidden text-gray-200 focus:outline-none text-2xl p-2 transition hover:text-white z-50">
       ☰
@@ -20,17 +18,32 @@
   </div>
 
   
-  <div
-    :class="['md:flex md:items-center md:justify-center md:space-x-8 px-5', isMobileMenuOpen ? 'block' : 'hidden']"
-    class="w-full md:w-auto pb-4 md:pb-0">
+  <div :class="['px-4 pb-4 md:pb-0 md:flex md:items-center md:justify-center md:space-x-8', isMobileMenuOpen ? 'block' : 'hidden']">
     <ul class="flex flex-col md:flex-row md:space-x-8 md:text-sm md:font-medium">
-      <li><router-link @click="toggleMobileMenu" to="/" class="text-gray-300 hover:text-white block py-2 px-4">Home</router-link></li>
-      <li><router-link @click="toggleMobileMenu" to="/about" class="text-gray-300 hover:text-white block py-2 px-4">About</router-link></li>
-      <li><router-link @click="toggleMobileMenu" to="/portfolio" class="text-gray-300 hover:text-white block py-2 px-4">Projects</router-link></li>
-      <li><router-link @click="toggleMobileMenu" to="/contact" class="text-gray-300 hover:text-white block py-2 px-4">ContactMe</router-link></li>
+      <li>
+        <router-link @click="toggleMobileMenu" to="/" class="text-gray-300 hover:text-white block py-2 px-4">
+          Home
+        </router-link>
+      </li>
+      <li>
+        <router-link @click="toggleMobileMenu" to="/about" class="text-gray-300 hover:text-white block py-2 px-4">
+          About
+        </router-link>
+      </li>
+      <li>
+        <router-link @click="toggleMobileMenu" to="/portfolio" class="text-gray-300 hover:text-white block py-2 px-4">
+          Portfolio
+        </router-link>
+      </li>
+      <li>
+        <router-link @click="toggleMobileMenu" to="/contact" class="text-gray-300 hover:text-white block py-2 px-4">
+          ContactMe
+        </router-link>
+      </li>
     </ul>
   </div>
 </nav>
+
 
     
     <div class="md:mt-[100px]">
@@ -50,8 +63,8 @@
           <ul class="space-y-2 text-gray-400">
             <li><router-link to="/" class="hover:text-white">Home</router-link></li>
             <li><router-link to="/about" class="hover:text-white">About</router-link></li>
-            <li><router-link to="/portfolio" class="hover:text-white">Projects</router-link></li>
-            <li><router-link to="/contact" class="hover:text-white">Contact</router-link></li>
+            <li><router-link to="/portfolio" class="hover:text-white">Portfolio</router-link></li>
+            <li><router-link to="/contact" class="hover:text-white">ContactMe</router-link></li>
           </ul>
         </div>
 
