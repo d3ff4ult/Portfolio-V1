@@ -78,7 +78,7 @@ export default {
           imageUrl: '/img/mysite.jpg',
           status: 'My personal website where I display my profile, skills, and projects. Also used to test new ideas.',
           d3ff4ult: 'VueJS 3, Tailwind CSS',
-          github: 'https://github.com/d3ff4ult/Portfolio-V1',
+          github: 'https://github.com/d3ff4ult/Portfolio-V1.git',
           demo: 'https://portfolio-v1-cj9u.vercel.app/',
         },
       ],
