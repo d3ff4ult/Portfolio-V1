@@ -26,7 +26,7 @@
     <ul class="flex flex-col md:flex-row md:space-x-8 md:text-sm md:font-medium">
       <li><router-link @click="toggleMobileMenu" to="/" class="text-gray-300 hover:text-white block py-2 px-4">Home</router-link></li>
       <li><router-link @click="toggleMobileMenu" to="/about" class="text-gray-300 hover:text-white block py-2 px-4">About</router-link></li>
-      <li><router-link @click="toggleMobileMenu" to="/projects" class="text-gray-300 hover:text-white block py-2 px-4">Projects</router-link></li>
+      <li><router-link @click="toggleMobileMenu" to="/portfolio" class="text-gray-300 hover:text-white block py-2 px-4">Projects</router-link></li>
       <li><router-link @click="toggleMobileMenu" to="/contact" class="text-gray-300 hover:text-white block py-2 px-4">ContactMe</router-link></li>
     </ul>
   </div>
@@ -50,7 +50,7 @@
           <ul class="space-y-2 text-gray-400">
             <li><router-link to="/" class="hover:text-white">Home</router-link></li>
             <li><router-link to="/about" class="hover:text-white">About</router-link></li>
-            <li><router-link to="/projects" class="hover:text-white">Projects</router-link></li>
+            <li><router-link to="/portfolio" class="hover:text-white">Projects</router-link></li>
             <li><router-link to="/contact" class="hover:text-white">Contact</router-link></li>
           </ul>
         </div>
