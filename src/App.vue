@@ -1,56 +1,38 @@
 <template>
   <div class="max-w-7xl mx-auto flex flex-col relative">
+    <!-- Top Navigation -->
+    <nav
+      class="max-w-7xl px-5 md:fixed top-0 z-[98] w-screen backdrop-blur-md bg-[#121212] bg-opacity-80 border-b border-gray-700">
+      <div class="container mx-auto flex flex-wrap items-center justify-between">
+        <button @click="redirectToHome" class="flex">
+          <span
+            class="self-center text-lg text-[#ff03038a] font-semibold whitespace-nowrap fadein-bot hover:text-amber-100">Eng.Abdelrhman(D3ff4ult);</span>
+        </button>
+        <div class="hidden md:flex justify-between items-center w-full md:w-auto md:order-1" id="mobile-menu-3">
+          <ul class="flex-col md:flex-row flex md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
+            <li><router-link to="/"
+                class="fadein-bot text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-gray-500 md:p-0"
+                aria-current="page">Home</router-link></li>
+            <li><router-link to="/about"
+                class="fadein-bot fadein-1 text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-gray-500 md:p-0">About</router-link>
+            </li>
+            <li><router-link to="/portfolio"
+                class="fadein-bot fadein-2 text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-gray-500 md:p-0">Projects</router-link>
+            </li>
+            <li><router-link to="/contact"
+                class="fadein-bot fadein-2 text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-gray-500 md:p-0">ContactMe</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#121212]/80 border-b border-gray-700">
-  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-    <!-- Logo -->
-    <button @click="redirectToHome" class="flex items-center">
-      <span class="text-lg text-[#ff03038a] font-semibold whitespace-nowrap hover:text-amber-100">
-        Eng.Abdelrhman(D3ff4ult);
-      </span>
-    </button>
-
-   
-    <button @click="toggleMobileMenu"
-      class="md:hidden text-gray-200 focus:outline-none text-2xl p-2 transition hover:text-white z-50">
-      ☰
-    </button>
-  </div>
-
-  
-  <div :class="['px-4 pb-4 md:pb-0 md:flex md:items-center md:justify-center md:space-x-8', isMobileMenuOpen ? 'block' : 'hidden']">
-    <ul class="flex flex-col md:flex-row md:space-x-8 md:text-sm md:font-medium">
-      <li>
-        <router-link @click="toggleMobileMenu" to="/" class="text-gray-300 hover:text-white block py-2 px-4">
-          Home
-        </router-link>
-      </li>
-      <li>
-        <router-link @click="toggleMobileMenu" to="/about" class="text-gray-300 hover:text-white block py-2 px-4">
-          About
-        </router-link>
-      </li>
-      <li>
-        <router-link @click="toggleMobileMenu" to="/portfolio" class="text-gray-300 hover:text-white block py-2 px-4">
-          Portfolio
-        </router-link>
-      </li>
-      <li>
-        <router-link @click="toggleMobileMenu" to="/contact" class="text-gray-300 hover:text-white block py-2 px-4">
-          ContactMe
-        </router-link>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-
-    
+    <!-- Main Content -->
     <div class="md:mt-[100px]">
       <router-view />
     </div>
 
-    
+    <!-- Footer -->
     <footer class="bg-[#121212] border-t border-[#383838] text-white py-10 px-5">
       <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
@@ -63,8 +45,8 @@
           <ul class="space-y-2 text-gray-400">
             <li><router-link to="/" class="hover:text-white">Home</router-link></li>
             <li><router-link to="/about" class="hover:text-white">About</router-link></li>
-            <li><router-link to="/portfolio" class="hover:text-white">Portfolio</router-link></li>
-            <li><router-link to="/contact" class="hover:text-white">ContactMe</router-link></li>
+            <li><router-link to="/portfolio" class="hover:text-white">Projects</router-link></li>
+            <li><router-link to="/contact" class="hover:text-white">Contact</router-link></li>
           </ul>
         </div>
 
