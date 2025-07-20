@@ -11,12 +11,7 @@
       ]"
     >
       <div class="max-w-7xl mx-auto flex items-center justify-between px-5 py-4">
-        <button @click="redirectToHome" class="flex items-center gap-2">
-          <img 
-            src="@/assets/profile.jpg" 
-            alt="Profile"
-            class="w-8 h-8 rounded-full border border-red-500 object-cover"
-          />
+        <button @click="redirectToHome" class="flex items-center">
           <span class="text-xl font-bold text-red-500 tracking-tight hover:text-white transition">
             Eng.Abdelrhman(D3ff4ult);
           </span>
@@ -83,7 +78,7 @@
         </div>
       </div>
       <div class="flex justify-center gap-4 mt-8">
-        <a href="https://github.com/d3ff4ult" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:text-white transition">
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:text-white transition">
           <i class="fab fa-github"></i>
         </a>
       </div>
@@ -99,8 +94,7 @@
 export default {
   data() {
     return {
-      isScrolled: false,
-      mobileMenuOpen: false
+      isScrolled: false
     };
   },
   mounted() {
