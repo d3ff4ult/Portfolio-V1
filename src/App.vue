@@ -2,15 +2,22 @@
   <div class="max-w-7xl mx-auto flex flex-col relative">
 
     <!-- Navbar -->
-    <nav
-      class="px-5 md:fixed top-0 z-[98] w-screen backdrop-blur-md bg-[#101010] bg-opacity-90 border-b border-[#2a2a2a]"
+    <nav 
+      :class="[
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        isScrolled 
+          ? 'backdrop-blur-md bg-[#101010] bg-opacity-95 border-b border-[#2a2a2a] shadow-lg' 
+          : 'backdrop-blur-sm bg-[#101010] bg-opacity-80'
+      ]"
     >
-      <div class="container mx-auto flex flex-wrap items-center justify-between py-4">
+      <div class="max-w-7xl mx-auto flex items-center justify-between px-5 py-4">
         <button @click="redirectToHome" class="flex items-center">
-          <span class="text-xl font-bold text-red-500 tracking-tight hover:text-white transition">Eng.Abdelrhman(D3ff4ult);</span>
+          <span class="text-xl font-bold text-red-500 tracking-tight hover:text-white transition">
+            Eng.Abdelrhman(D3ff4ult);
+          </span>
         </button>
 
-        <!-- Desktop Links -->
+        <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-6 text-sm font-medium">
           <router-link to="/" class="text-gray-300 hover:text-white transition">Home</router-link>
           <router-link to="/about" class="text-gray-300 hover:text-white transition">About</router-link>
@@ -18,23 +25,23 @@
           <router-link to="/contact" class="text-gray-300 hover:text-white transition">Contact</router-link>
         </div>
 
-        <!-- Mobile Button -->
-        <button class="md:hidden text-red-500" @click="mobileMenuOpen = !mobileMenuOpen">
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-red-500" @click="toggleMobileMenu">
           <i class="fas fa-bars text-xl"></i>
         </button>
       </div>
 
-      <!-- Mobile Menu -->
-      <div v-if="mobileMenuOpen" class="md:hidden px-4 pb-4 space-y-2">
-        <router-link @click="mobileMenuOpen = false" to="/" class="block text-gray-300 hover:text-white">Home</router-link>
-        <router-link @click="mobileMenuOpen = false" to="/about" class="block text-gray-300 hover:text-white">About</router-link>
-        <router-link @click="mobileMenuOpen = false" to="/portfolio" class="block text-gray-300 hover:text-white">Projects</router-link>
-        <router-link @click="mobileMenuOpen = false" to="/contact" class="block text-gray-300 hover:text-white">Contact</router-link>
+      <!-- Mobile Menu Items -->
+      <div v-if="mobileMenuOpen" class="md:hidden px-5 pb-4 space-y-2">
+        <router-link @click="closeMobileMenu" to="/" class="block text-gray-300 hover:text-white">Home</router-link>
+        <router-link @click="closeMobileMenu" to="/about" class="block text-gray-300 hover:text-white">About</router-link>
+        <router-link @click="closeMobileMenu" to="/portfolio" class="block text-gray-300 hover:text-white">Projects</router-link>
+        <router-link @click="closeMobileMenu" to="/contact" class="block text-gray-300 hover:text-white">Contact</router-link>
       </div>
     </nav>
 
-    <!-- Page Content -->
-    <div class="md:mt-[100px]">
+    <!-- Main Content -->
+    <div class="pt-[100px]">
       <router-view />
     </div>
 
@@ -65,32 +72,10 @@
           </ul>
         </div>
       </div>
-
-      <!-- Social Links -->
-      <div class="mt-10">
-        <h3 class="text-xl font-semibold mb-4 text-red-500 text-center">Follow Me</h3>
-        <div class="flex justify-center gap-4 mt-4">
-          <a href="https://www.linkedin.com/in/abdelrhman-hesham-395268335" target="_blank" aria-label="LinkedIn"
-            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="https://snapchat.com/t/Hk3jmyAg" target="_blank" aria-label="Snapchat"
-            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition">
-            <i class="fab fa-snapchat-ghost"></i>
-          </a>
-          <a href="https://www.facebook.com/abdo.hesham.52438" target="_blank" aria-label="Facebook"
-            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://www.instagram.com/abdo.h.28" target="_blank" aria-label="Instagram"
-            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://github.com/d3ff4ult" target="_blank" aria-label="GitHub"
-            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition">
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
+      <div class="flex justify-center gap-4 mt-8">
+        <a href="https://github.com/d3ff4ult" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:text-white transition">
+          <i class="fab fa-github"></i>
+        </a>
       </div>
 
       <div class="mt-6 text-center text-gray-500 text-xs">
@@ -104,25 +89,35 @@
 export default {
   data() {
     return {
+      isScrolled: false,
       mobileMenuOpen: false
     };
   },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
   methods: {
     redirectToHome() {
-      this.$router.push('/');
+      this.$router.push("/");
+    },
+    handleScroll() {
+      this.isScrolled = window.scrollY > 30;
     },
     toggleMobileMenu() {
-      this.isMobileMenuOpen = !this.isMobileMenuOpen;
+      this.mobileMenuOpen = !this.mobileMenuOpen;
     },
     closeMobileMenu() {
-      this.isMobileMenuOpen = false;
+      this.mobileMenuOpen = false;
     }
   }
 };
 </script>
 
 <style>
-/* Same styles you already had */
+/* Your same styles */
 *,
 *::before,
 *::after {
@@ -137,10 +132,9 @@ export default {
 }
 
 ::-webkit-scrollbar-track {
-  background: hsla(0, 0%, 100%, 0);
+  background: transparent;
   border-radius: 5px;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #ffffff;
   border-radius: 5px;
@@ -162,18 +156,9 @@ body {
 
 nav a {
   font-size: 15px;
-  transition: color 0.3s ease;
-}
-
-h1, h2, h3 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-p {
-  font-size: 14px;
-  color: #bcbcbc;
+  font-weight: bold;
+  color: #2c3e50;
+  transition: color 0.3s;
 }
 
 nav a.router-link-exact-active {
@@ -195,7 +180,7 @@ nav a.router-link-exact-active::after {
 }
 
 nav a.router-link-exact-active:hover {
-  color: hsl(0, 0%, 100%);
+  color: #ffffff;
 }
 
 h1, h2, h3 {
@@ -207,5 +192,16 @@ h1, h2, h3 {
 p {
   font-size: 14px;
   color: #bcbcbc;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 </style>
