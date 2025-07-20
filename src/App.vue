@@ -1,17 +1,13 @@
 <template>
   <div class="max-w-7xl mx-auto flex flex-col relative">
 
-    <!-- Responsive Navbar -->
+    <!-- Navbar -->
     <nav
-      :class="[
-        'fixed top-0 left-0 right-0 z-[98] w-full backdrop-blur-md bg-[#101010] bg-opacity-90 border-b border-[#2a2a2a]'
-      ]"
+      class="px-5 md:fixed top-0 z-[98] w-screen backdrop-blur-md bg-[#101010] bg-opacity-90 border-b border-[#2a2a2a]"
     >
-      <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+      <div class="container mx-auto flex flex-wrap items-center justify-between py-4">
         <button @click="redirectToHome" class="flex items-center">
-          <span class="text-xl font-bold text-red-500 tracking-tight hover:text-white transition">
-            Eng.Abdelrhman(D3ff4ult);
-          </span>
+          <span class="text-xl font-bold text-red-500 tracking-tight hover:text-white transition">Eng.Abdelrhman(D3ff4ult);</span>
         </button>
 
         <!-- Desktop Links -->
@@ -22,41 +18,37 @@
           <router-link to="/contact" class="text-gray-300 hover:text-white transition">Contact</router-link>
         </div>
 
-        <!-- Mobile Toggle -->
-        <button @click="toggleMobileMenu" class="md:hidden text-gray-300 hover:text-white transition text-xl">
-          <i class="fas" :class="isMobileMenuOpen ? 'fa-times' : 'fa-bars'"></i>
+        <!-- Mobile Button -->
+        <button class="md:hidden text-red-500" @click="mobileMenuOpen = !mobileMenuOpen">
+          <i class="fas fa-bars text-xl"></i>
         </button>
       </div>
 
-      <div v-if="isMobileMenuOpen" class="md:hidden px-5 pb-4">
-        <div class="flex flex-col space-y-2 text-sm font-medium">
-          <router-link to="/" class="text-gray-300 hover:text-white transition" @click="closeMobileMenu">Home</router-link>
-          <router-link to="/about" class="text-gray-300 hover:text-white transition" @click="closeMobileMenu">About</router-link>
-          <router-link to="/portfolio" class="text-gray-300 hover:text-white transition" @click="closeMobileMenu">Projects</router-link>
-          <router-link to="/contact" class="text-gray-300 hover:text-white transition" @click="closeMobileMenu">Contact</router-link>
-        </div>
+      <!-- Mobile Menu -->
+      <div v-if="mobileMenuOpen" class="md:hidden px-4 pb-4 space-y-2">
+        <router-link @click="mobileMenuOpen = false" to="/" class="block text-gray-300 hover:text-white">Home</router-link>
+        <router-link @click="mobileMenuOpen = false" to="/about" class="block text-gray-300 hover:text-white">About</router-link>
+        <router-link @click="mobileMenuOpen = false" to="/portfolio" class="block text-gray-300 hover:text-white">Projects</router-link>
+        <router-link @click="mobileMenuOpen = false" to="/contact" class="block text-gray-300 hover:text-white">Contact</router-link>
       </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- Page Content -->
     <div class="md:mt-[100px]">
       <router-view />
     </div>
 
     <!-- Footer -->
-    <footer class="bg-[#0f0f0f] border-t border-[#2c2c2c] text-gray-300 py-12 px-6">
-      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
-
-        <!-- Info -->
+    <footer class="bg-[#0f0f0f] border-t border-[#2c2c2c] text-gray-300 py-10 px-6">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
         <div>
           <h2 class="text-lg font-semibold text-red-500 mb-3">Information</h2>
           <p>Back-end developer crafting modern sites</p>
         </div>
 
-        <!-- Quick Links -->
         <div>
           <h3 class="text-red-400 font-semibold mb-2">Quick Links</h3>
-          <ul class="space-y-2">
+          <ul class="space-y-1">
             <li><router-link to="/" class="hover:text-white transition">Home</router-link></li>
             <li><router-link to="/about" class="hover:text-white transition">About</router-link></li>
             <li><router-link to="/portfolio" class="hover:text-white transition">Projects</router-link></li>
@@ -64,50 +56,44 @@
           </ul>
         </div>
 
-        <!-- Contact + Social -->
         <div>
           <h3 class="text-red-400 font-semibold mb-2">Contact Info</h3>
-          <ul class="space-y-2">
+          <ul class="space-y-1">
             <li>Email: <a href="mailto:abdoh6112113@gmail.com" class="hover:text-white transition">abdoh6112113@gmail.com</a></li>
             <li>Phone: <a href="tel:+201149969986" class="hover:text-white transition">+20 114 996 9986</a></li>
             <li>Location: Giza, Egypt</li>
           </ul>
-
-          <!-- Follow Me Section -->
-          <div class="mt-10">
-            <h3 class="text-xl font-semibold mb-4 text-red-500">Follow Me</h3>
-            <div class="flex gap-4 flex-wrap">
-              <a href="https://www.linkedin.com/in/abdelrhman-hesham-395268335" target="_blank"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition"
-                aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a href="https://snapchat.com/t/Hk3jmyAg" target="_blank"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition"
-                aria-label="Snapchat">
-                <i class="fab fa-snapchat-ghost"></i>
-              </a>
-              <a href="https://www.facebook.com/abdo.hesham.52438" target="_blank"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition"
-                aria-label="Facebook">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="https://www.instagram.com/abdo.h.28" target="_blank"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition"
-                aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="https://github.com/d3ff4ult" target="_blank"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition"
-                aria-label="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
 
-      <div class="mt-10 text-center text-gray-500 text-xs">
+      <!-- Social Links -->
+      <div class="mt-10">
+        <h3 class="text-xl font-semibold mb-4 text-red-500 text-center">Follow Me</h3>
+        <div class="flex justify-center gap-4 mt-4">
+          <a href="https://www.linkedin.com/in/abdelrhman-hesham-395268335" target="_blank" aria-label="LinkedIn"
+            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://snapchat.com/t/Hk3jmyAg" target="_blank" aria-label="Snapchat"
+            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition">
+            <i class="fab fa-snapchat-ghost"></i>
+          </a>
+          <a href="https://www.facebook.com/abdo.hesham.52438" target="_blank" aria-label="Facebook"
+            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/abdo.h.28" target="_blank" aria-label="Instagram"
+            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://github.com/d3ff4ult" target="_blank" aria-label="GitHub"
+            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:bg-gray-700 transition">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-6 text-center text-gray-500 text-xs">
         © {{ new Date().getFullYear() }} D3ff4ult. All rights reserved.
       </div>
     </footer>
@@ -118,7 +104,7 @@
 export default {
   data() {
     return {
-      isMobileMenuOpen: false
+      mobileMenuOpen: false
     };
   },
   methods: {
@@ -136,6 +122,7 @@ export default {
 </script>
 
 <style>
+/* Same styles you already had */
 *,
 *::before,
 *::after {
@@ -175,9 +162,18 @@ body {
 
 nav a {
   font-size: 15px;
-  font-weight: bold;
-  color: #2c3e50;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+p {
+  font-size: 14px;
+  color: #bcbcbc;
 }
 
 nav a.router-link-exact-active {
