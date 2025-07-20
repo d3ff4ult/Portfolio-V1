@@ -11,10 +11,11 @@
     >
       <div class="container mx-auto flex flex-wrap items-center justify-between py-4">
         <button @click="redirectToHome" class="flex items-center">
-          <span
-            class="text-xl font-bold text-red-500 tracking-tight hover:text-white transition">Eng.Abdelrhman(D3ff4ult);</span>
+          <span class="text-xl font-bold text-red-500 tracking-tight hover:text-white transition">
+            Eng.Abdelrhman(D3ff4ult);
+          </span>
         </button>
-        
+
         <!-- Desktop Navigation -->
         <div class="hidden md:flex space-x-6 text-sm font-medium">
           <router-link to="/" class="text-gray-300 hover:text-white transition relative group">
@@ -49,7 +50,6 @@
           </svg>
         </button>
       </div>
-    </div>
 
       <!-- Mobile Menu -->
       <div 
@@ -61,44 +61,16 @@
         ]"
       >
         <div class="px-4 pt-2 pb-4 space-y-2 bg-[#101010] bg-opacity-95 border-t border-[#2a2a2a]">
-          <router-link
-            to="/"
-            @click="closeMobileMenu"
-            class="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300"
-          >
-            Home
-          </router-link>
-          <router-link
-            to="/about"
-            @click="closeMobileMenu"
-            class="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300"
-          >
-            About
-          </router-link>
-          <router-link
-            to="/portfolio"
-            @click="closeMobileMenu"
-            class="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300"
-          >
-            Projects
-          </router-link>
-          <router-link
-            to="/contact"
-            @click="closeMobileMenu"
-            class="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300"
-          >
-            Contact
-          </router-link>
+          <router-link to="/" @click="closeMobileMenu" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300">Home</router-link>
+          <router-link to="/about" @click="closeMobileMenu" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300">About</router-link>
+          <router-link to="/portfolio" @click="closeMobileMenu" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300">Projects</router-link>
+          <router-link to="/contact" @click="closeMobileMenu" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300">Contact</router-link>
         </div>
       </div>
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div
-      v-if="isMobileMenuOpen"
-      @click="closeMobileMenu"
-      class="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden"
-    />
+    <div v-if="isMobileMenuOpen" @click="closeMobileMenu" class="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden" />
 
     <div class="md:mt-[100px]">
       <router-view />
@@ -129,9 +101,11 @@
         </div>
       </div>
       <div class="flex justify-center gap-4 mt-8">
-        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:text-white transition"><i class="fab fa-github"></i></a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:text-white transition">
+          <i class="fab fa-github"></i>
+        </a>
       </div>
-      <div class="mt-6 text-center text-gray-500 text-xs">© {{ new Date().getFullYear() }} D3ff4ult. All rights reserved.</div>
+      <div class="mt-6 text-center text-gray-500 text-xs">© {{ currentYear }} D3ff4ult. All rights reserved.</div>
     </footer>
 
   </div>
@@ -142,33 +116,34 @@ export default {
   data() {
     return {
       isMobileMenuOpen: false,
-      isScrolled: false
-    }
+      isScrolled: false,
+      currentYear: new Date().getFullYear()
+    };
   },
   methods: {
     redirectToHome() {
-      this.$router.push('/')
+      this.$router.push('/');
     },
     toggleMobileMenu() {
-      this.isMobileMenuOpen = !this.isMobileMenuOpen
+      this.isMobileMenuOpen = !this.isMobileMenuOpen;
     },
     closeMobileMenu() {
-      this.isMobileMenuOpen = false
+      this.isMobileMenuOpen = false;
     },
     handleScroll() {
-      this.isScrolled = window.scrollY > 20
+      this.isScrolled = window.scrollY > 20;
     }
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll);
   },
   beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll);
   }
-}
+};
 </script>
 
-<style>
+<style lang="css">
 *,
 *::before,
 *::after {
