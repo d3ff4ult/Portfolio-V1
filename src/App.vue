@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-7xl mx-auto flex flex-col relative">
-
+    
     <!-- Navbar -->
     <nav 
       :class="[
@@ -11,7 +11,12 @@
       ]"
     >
       <div class="max-w-7xl mx-auto flex items-center justify-between px-5 py-4">
-        <button @click="redirectToHome" class="flex items-center">
+        <button @click="redirectToHome" class="flex items-center gap-2">
+          <img 
+            src="@/assets/profile.jpg" 
+            alt="Profile"
+            class="w-8 h-8 rounded-full border border-red-500 object-cover"
+          />
           <span class="text-xl font-bold text-red-500 tracking-tight hover:text-white transition">
             Eng.Abdelrhman(D3ff4ult);
           </span>
@@ -31,7 +36,7 @@
         </button>
       </div>
 
-      <!-- Mobile Menu Items -->
+      <!-- Mobile Menu -->
       <div v-if="mobileMenuOpen" class="md:hidden px-5 pb-4 space-y-2">
         <router-link @click="closeMobileMenu" to="/" class="block text-gray-300 hover:text-white">Home</router-link>
         <router-link @click="closeMobileMenu" to="/about" class="block text-gray-300 hover:text-white">About</router-link>
@@ -50,6 +55,11 @@
       <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
         <div>
           <h2 class="text-lg font-semibold text-red-500 mb-3">Information</h2>
+          <img 
+            src="@/assets/profile.jpg" 
+            alt="Profile"
+            class="w-16 h-16 rounded-full border border-red-500 object-cover mb-3"
+          />
           <p>Back-end developer crafting modern sites</p>
         </div>
 
