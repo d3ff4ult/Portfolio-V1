@@ -101,9 +101,31 @@
         </div>
       </div>
       <div class="flex justify-center gap-4 mt-8">
-        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:text-white transition">
-          <i class="fab fa-github"></i>
-        </a>
+     <a href="https://www.linkedin.com/in/abdelrhman-hesham-395268335" target="_blank"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-[#1f1f1f] text-[#ff3b3b] hover:bg-[#2a2a2a] transition"
+                aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://snapchat.com/t/Hk3jmyAg" target="_blank"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-[#1f1f1f] text-[#ff3b3b] hover:bg-[#2a2a2a] transition"
+                aria-label="Snapchat">
+                <i class="fab fa-snapchat-ghost"></i>
+              </a>
+              <a href="https://www.facebook.com/abdo.hesham.52438" target="_blank"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-[#1f1f1f] text-[#ff3b3b] hover:bg-[#2a2a2a] transition"
+                aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://www.instagram.com/abdo.h.28" target="_blank"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-[#1f1f1f] text-[#ff3b3b] hover:bg-[#2a2a2a] transition"
+                aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://github.com/d3ff4ult" target="_blank"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-[#1f1f1f] text-[#ff3b3b] hover:bg-[#2a2a2a] transition"
+                aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
       </div>
       <div class="mt-6 text-center text-gray-500 text-xs">© {{ currentYear }} D3ff4ult. All rights reserved.</div>
     </footer>
