@@ -51,6 +51,6 @@
     "not ie 11"
   ],
   "engines": {
-    "node": "20.x"
+    "node": "18.x"
   }
 }
