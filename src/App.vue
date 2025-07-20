@@ -44,6 +44,8 @@
           </svg>
         </button>
       </div>
+    </div>
+
     <!-- Mobile Menu -->
     <div 
       :class="[
@@ -140,6 +142,7 @@ onUnmounted(() => {
   background: transparent;
   border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #ffffff;
   border-radius: 5px;
@@ -164,6 +167,7 @@ nav a {
   font-weight: bold;
   color: #2c3e50;
   transition: color 0.3s;
+  font-size: 15px;
 }
 
 nav a.router-link-exact-active {
