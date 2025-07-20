@@ -1,31 +1,36 @@
 <template>
-  <nav 
-    :class="[
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-      isScrolled 
-        ? 'backdrop-blur-md bg-[#101010] bg-opacity-95 border-b border-[#2a2a2a] shadow-lg' 
-        : 'backdrop-blur-sm bg-[#101010] bg-opacity-80'
-    ]"
-  >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <!-- Logo -->
-        <button @click="navigateTo('/')" class="flex items-center group">
-          <span class="text-xl font-bold text-red-500 tracking-tight group-hover:text-white transition-colors duration-300">
-            Eng.Abdelrhman(D3ff4ult);
-          </span>
+  <div class="max-w-7xl mx-auto flex flex-col relative">
+   
+    <nav
+      :class="[
+        'max-w-7xl px-5 md:fixed top-0 z-[98] w-screen transition-all duration-300',
+        isScrolled 
+          ? 'backdrop-blur-md bg-[#101010] bg-opacity-95 border-b border-[#2a2a2a] shadow-lg' 
+          : 'backdrop-blur-md bg-[#101010] bg-opacity-90 border-b border-[#2a2a2a]'
+      ]"
+    >
+      <div class="container mx-auto flex flex-wrap items-center justify-between py-4">
+        <button @click="redirectToHome" class="flex items-center">
+          <span
+            class="text-xl font-bold text-red-500 tracking-tight hover:text-white transition">Eng.Abdelrhman(D3ff4ult);</span>
         </button>
-
+        
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-8">
-          <router-link
-            v-for="item in navItems"
-            :key="item.path"
-            :to="item.path"
-            class="text-gray-300 hover:text-white transition-colors duration-300 text-sm font-medium relative group"
-            active-class="router-link-exact-active"
-          >
-            {{ item.label }}
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <router-link to="/" class="text-gray-300 hover:text-white transition relative group">
+            Home
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+          </router-link>
+          <router-link to="/about" class="text-gray-300 hover:text-white transition relative group">
+            About
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+          </router-link>
+          <router-link to="/portfolio" class="text-gray-300 hover:text-white transition relative group">
+            Projects
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+          </router-link>
+          <router-link to="/contact" class="text-gray-300 hover:text-white transition relative group">
+            Contact
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
           </router-link>
         </div>
@@ -46,26 +51,47 @@
       </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div 
-      :class="[
-        'md:hidden transition-all duration-300 ease-in-out',
-        isMobileMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-      ]"
-    >
-      <div class="px-4 pt-2 pb-4 space-y-2 bg-[#101010] bg-opacity-95 border-t border-[#2a2a2a]">
-        <router-link
-          v-for="(item, index) in navItems"
-          :key="item.path"
-          :to="item.path"
-          @click="closeMobileMenu"
-          class="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300"
-          :style="{ transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : '0ms' }"
-        >
-          {{ item.label }}
-        </router-link>
+      <!-- Mobile Menu -->
+      <div 
+        :class="[
+          'md:hidden transition-all duration-300 ease-in-out',
+          isMobileMenuOpen 
+            ? 'max-h-64 opacity-100' 
+            : 'max-h-0 opacity-0 overflow-hidden'
+        ]"
+      >
+        <div class="px-4 pt-2 pb-4 space-y-2 bg-[#101010] bg-opacity-95 border-t border-[#2a2a2a]">
+          <router-link
+            to="/"
+            @click="closeMobileMenu"
+            class="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300"
+          >
+            Home
+          </router-link>
+          <router-link
+            to="/about"
+            @click="closeMobileMenu"
+            class="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300"
+          >
+            About
+          </router-link>
+          <router-link
+            to="/portfolio"
+            @click="closeMobileMenu"
+            class="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300"
+          >
+            Projects
+          </router-link>
+          <router-link
+            to="/contact"
+            @click="closeMobileMenu"
+            class="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300"
+          >
+            Contact
+          </router-link>
+        </div>
       </div>
-    </div>
+    </nav>
 
     <!-- Mobile Menu Overlay -->
     <div
@@ -73,58 +99,91 @@
       @click="closeMobileMenu"
       class="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden"
     />
-  </nav>
+
+    <div class="md:mt-[100px]">
+      <router-view />
+    </div>
+
+    <footer class="bg-[#0f0f0f] border-t border-[#2c2c2c] text-gray-300 py-10 px-6">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+        <div>
+          <h2 class="text-lg font-semibold text-red-500 mb-3">Information</h2>
+          <p>Back-end developer crafting modern sites</p>
+        </div>
+        <div>
+          <h3 class="text-red-400 font-semibold mb-2">Quick Links</h3>
+          <ul class="space-y-1">
+            <li><router-link to="/" class="hover:text-white transition">Home</router-link></li>
+            <li><router-link to="/about" class="hover:text-white transition">About</router-link></li>
+            <li><router-link to="/portfolio" class="hover:text-white transition">Projects</router-link></li>
+            <li><router-link to="/contact" class="hover:text-white transition">Contact</router-link></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-red-400 font-semibold mb-2">Contact Info</h3>
+          <ul class="space-y-1">
+            <li>Email: <a href="mailto:abdoh6112113@gmail.com" class="hover:text-white transition">abdoh6112113@gmail.com</a></li>
+            <li>Phone: <a href="tel:+201149969986" class="hover:text-white transition">+20 114 996 9986</a></li>
+            <li>Location: Giza, Egypt</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex justify-center gap-4 mt-8">
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-red-500 hover:text-white transition"><i class="fab fa-github"></i></a>
+      </div>
+      <div class="mt-6 text-center text-gray-500 text-xs">© {{ new Date().getFullYear() }} D3ff4ult. All rights reserved.</div>
+    </footer>
+
+  </div>
 </template>
 
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-const isMobileMenuOpen = ref(false)
-const isScrolled = ref(false)
-
-const navItems = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Projects', path: '/portfolio' },
-  { label: 'Contact', path: '/contact' }
-]
-
-const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value
+<script>
+export default {
+  data() {
+    return {
+      isMobileMenuOpen: false,
+      isScrolled: false
+    }
+  },
+  methods: {
+    redirectToHome() {
+      this.$router.push('/')
+    },
+    toggleMobileMenu() {
+      this.isMobileMenuOpen = !this.isMobileMenuOpen
+    },
+    closeMobileMenu() {
+      this.isMobileMenuOpen = false
+    },
+    handleScroll() {
+      this.isScrolled = window.scrollY > 20
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
 }
-
-const closeMobileMenu = () => {
-  isMobileMenuOpen.value = false
-}
-
-const navigateTo = (path) => {
-  closeMobileMenu()
-  router.push(path)
-}
-
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 20
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
 </script>
 
 <style>
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: hsla(0, 0%, 100%, 0);
   border-radius: 5px;
 }
 
@@ -186,7 +245,7 @@ nav a.router-link-exact-active {
 nav a.router-link-exact-active::after {
   display: inline-block;
   content: "";
-  display: block;
+  margin-top: 0.08em;
   width: 100%;
   height: 4px;
   margin-top: 0.08em;
@@ -195,6 +254,18 @@ nav a.router-link-exact-active::after {
 }
 
 nav a.router-link-exact-active:hover {
-  color: #ffffff;
+  color: hsl(0, 0%, 100%);
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 </style>
